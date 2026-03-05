@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Car Track Builder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="screen-menu" class="screen active">
+    <div class="menu-box">
+      <h1 class="logo">Track Builder</h1>
+      <p class="subtitle">Navrhni svoji závodní trať</p>
+      <div class="menu-buttons">
+        <button onclick="newMap()">Nová mapa</button>
+        <button onclick="showScreen('screen-load')"> Načíst mapu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="screen-editor" class="screen">
+    <div class="editor-layout">
+
+      <aside class="sidebar">
+        <h2>🛠️ Nástroje</h2>
+
+        <div class="section">
+          <p class="section-label">Kreslíš:</p>
+          <div class="tile-palette" id="palette"></div>
+        </div>
+
+        <div class="section">
+          <p class="section-label">Mapa:</p>
+          <input id="map-name" type="text" placeholder="Název mapy..." />
+          <button onclick="saveMap()"> Uložit</button>
+          <button onclick="exportMap()"> Export (.json)</button>
+          <label class="import-btn">
+            📥 Import
+            <input type="file" accept=".json" onchange="importMap(event)" />
+          </label>
+        </div>
+
+        <div class="section">
+          <button class="secondary" onclick="clearMap()">🗑️ Vymazat mapu</button>
+          <button class="secondary" onclick="showScreen('screen-menu')">← Menu</button>
+        </div>
+      </aside>
+
+
+      <main class="grid-area">
+        <div id="grid"></div>
+      </main>
+
+    </div>
+  </div>
+
+  <div id="screen-load" class="screen">
+    <div class="load-box">
+      <h2>Uložené mapy</h2>
+      <div id="saved-list"></div>
+      <button class="secondary" onclick="showScreen('screen-menu')">← Zpět</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
